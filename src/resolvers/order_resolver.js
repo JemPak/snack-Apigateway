@@ -18,9 +18,9 @@ const orderResolver = {
   Mutation: {
     createOrder: async (_, { order }, { dataSources, userIdToken }) => {
       //if (order.userEmail == (await dataSources.authAPI.getUser(userIdToken)).email)
-      if ((await dataSources.authAPI.getUser(userIdToken)).is_auth)
-        return await dataSources.orderAPI.createOrder(order);
-      else return null;
+
+      return await dataSources.orderAPI.createOrder(order);
+      //else return null;
     }
   }
 };
