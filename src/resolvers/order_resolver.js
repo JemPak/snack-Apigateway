@@ -17,10 +17,9 @@ const orderResolver = {
   },
   Mutation: {
     createOrder: async (_, { order }, { dataSources, userIdToken }) => {
-      //if (order.userEmail == (await dataSources.authAPI.getUser(userIdToken)).email)
-
-      return await dataSources.orderAPI.createOrder(order);
-      //else return null;
+      if (order.userEmail == (await dataSources.authAPI.getUser(userIdToken)).email)
+        return await dataSources.orderAPI.createOrder(order);
+      else return null;
     }
   }
 };
